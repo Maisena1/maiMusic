@@ -22,21 +22,26 @@ btnburger.addEventListener("click", (e) => {
     state = true;
   }
 });
-
-btnmsjalert.addEventListener("click", (e) => {
-  console.log(e);
-});
-
 const addmusic = (e) => {
   if (music_list.length === 7) {
     return console.log("ya esta lleno");
   } else {
     music_list.push(e.target.dataset.title);
+    console.log(e.target.dataset.title);
   }
   showmusic(e);
 };
+document.addEventListener("click", (e) => {
+  if (e.target.matches(".alert__btn")) {
+    msjalert.style.display = "none";
+    containerall.style.filter = "none";
+  }
+});
 
-const showmusic = (e) => {};
+const showmusic = (e) => {
+  container.textContent = "";
+  showmusic.forEach((item) => {});
+};
 btnadd.forEach((item) => {
   item.addEventListener("click", addmusic);
 });

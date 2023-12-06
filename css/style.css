@@ -85,6 +85,7 @@
   transition: all 1s;
 }
 .hideburger {
+  display: none;
   position: absolute;
   left: 320px;
   top: 55px;
