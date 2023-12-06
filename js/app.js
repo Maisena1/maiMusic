@@ -1,31 +1,30 @@
 const msjalert = document.querySelector(".container_msj_alert");
 const containerall = document.querySelector(".container");
-const containcard = document.querySelector(".containerMusic__cards");
 const pop_ups = document.querySelector(".pop-ups");
-btnburger=document.querySelector("#burgerlist_mobile")
+const btnadd = document.querySelectorAll(".btn-add");
+const btnburger = document.querySelector("#burgerlist_mobile");
+const list_Music = document.querySelector(".music-music");
+const template = document.querySelector(".list-music__music");
+// le asigno el atributo hidden a la lista de musica para no mostrarla todavia
+const music_list = [];
+list_Music.setAttribute("hidden", "true");
+pop_ups.setAttribute("hidden", "true");
 let state = false;
-
 document.addEventListener("click", (e) => {
   if (e.target.matches(".alert__btn")) {
     containerall.style.filter = "none";
     msjalert.style.display = "none";
   }
-  if (
-    e.target.matches(".cards") ||
-    e.target.matches(".card-img") ||
-    e.target.matches(".card-title")
-  ) {
-    console.log("me diste click");
-  }
 });
-btnburger.addEventListener("click",()=>{
-  if (state) {
-    pop_ups.classList.add("showburger");
-    pop_ups.classList.remove("hideburger");
-    state = false;
+const addmusic = (e) => {
+  if (music_list.length === 7) {
+    return console.log("ya esta lleno");
   } else {
-    pop_ups.classList.add("hideburger");
-    pop_ups.classList.remove("showburger");
-    state = true;
+    music_list.push(e.target.dataset.title);
   }
-})
+  showmusic(e);
+};
+const showmusic = (e) => {};
+btnadd.forEach((item) => {
+  item.addEventListener("click", addmusic);
+});
